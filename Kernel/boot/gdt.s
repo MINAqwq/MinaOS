@@ -39,7 +39,7 @@ _gdt_kernel_dataseg:
 .byte  0xCF
 .byte  0x00
 
-/* flat kernel data segment
+/* flat user code segment
  * Base = 0
  * Limit = 0xFFFFF
  * Access Byte = 0xFA
@@ -53,7 +53,7 @@ _gdt_user_codeseg:
 .byte  0xCF
 .byte  0x00
 
-/* flat kernel data segment
+/* flat user data segment
  * Base = 0
  * Limit = 0xFFFFF
  * Access Byte = 0xF2
@@ -73,6 +73,7 @@ _gdtr:
     .short (_gdt_end - _gdt_start)
     .long _gdt_start
 
+/* tell cpu where the gdt is located */
 .type _gdt_load, @function
 _gdt_load:
     lgdt (_gdtr)

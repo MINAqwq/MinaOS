@@ -1,7 +1,7 @@
 /* kernel typedefs */
 
-#ifndef KERNEL_SYS_KTYPES_H
-#define KERNEL_SYS_KTYPES_H
+#ifndef KERNEL_TYPES_H
+#define KERNEL_TYPES_H
 
 typedef unsigned char uint8;
 typedef unsigned short uint16;

@@ -7,4 +7,4 @@ if [ -z $ARCH ];then
     exit 1
 fi
 
-qemu-system-$ARCH -kernel kernel.bin -machine type=pc-i440fx-3.1
+qemu-system-$ARCH -kernel kernel.bin

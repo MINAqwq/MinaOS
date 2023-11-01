@@ -1,7 +1,33 @@
+/* operating system entry point */
+
 .global _start
 
 .extern _gdt_load
 .extern kernel_boot_stack_top
+
+.type _start, @function
+_start:
+    /* disable interrupts */
+    cli
+
+    /* setup stack */
+    mov $kernel_boot_stack_top, %esp 
+
+    /* load gdt */
+    call _gdt_load
+
+    /* reload segments */
+    call _reload_segments
+
+    /* setup interrupts */
+    call kernel_int_setup
+
+._b_loop:
+    jmp ._b_loop
+
+    /* halt */
+    hlt
+
 
 .type _reload_segments, @function
 _reload_segments:
@@ -16,25 +42,3 @@ _reload_segments:
     mov %ax, %gs
     mov %ax, %ss
     ret
-
-.type _start, @function
-_start:
-    /* disable intterupts */
-    cli
-
-    /* setup stack */
-    mov $kernel_boot_stack_top, %esp 
-
-    /* load gdt */
-    call _gdt_load
-
-    /* reload segments */
-    call _reload_segments
-
-    /* write a to vga memory */
-    movb $0x41, 0xb8000
-    movb $0x0C, 0xb8001
-
-    /* halt */
-    cli
-    hlt

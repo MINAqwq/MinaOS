@@ -1,3 +1,5 @@
 *.o
 kernel.bin
+kernel.iso
 Toolchain/*
+iso

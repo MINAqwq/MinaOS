@@ -3,8 +3,11 @@
 .global _start
 
 .extern _gdt_load
+.extern kernel_main
+
 .extern kernel_boot_stack_top
 
+.text
 .type _start, @function
 _start:
     /* disable interrupts */
@@ -19,15 +22,11 @@ _start:
     /* reload segments */
     call _reload_segments
 
-    /* setup interrupts */
-    call kernel_int_setup
+    /* jump to c land */
+    call kernel_main
 
 ._b_loop:
     jmp ._b_loop
-
-    /* halt */
-    hlt
-
 
 .type _reload_segments, @function
 _reload_segments:

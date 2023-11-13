@@ -2,9 +2,6 @@
 
 .global kernel_int_ignore
 
-hallo:
-.long 0
-
 .macro KERNEL_INT_REG num
 .global kernel_isr_forward_\num
 kernel_isr_forward_\num:
@@ -12,11 +9,27 @@ kernel_isr_forward_\num:
     jmp kernel_isr_main
 .endm
 
+KERNEL_INT_REG 0
 KERNEL_INT_REG 32
 KERNEL_INT_REG 33
+KERNEL_INT_REG 34
+KERNEL_INT_REG 35
+KERNEL_INT_REG 36
+KERNEL_INT_REG 37
+KERNEL_INT_REG 38
+KERNEL_INT_REG 39
+KERNEL_INT_REG 40
+KERNEL_INT_REG 41
+KERNEL_INT_REG 42
+KERNEL_INT_REG 43
+KERNEL_INT_REG 44
+KERNEL_INT_REG 45
+KERNEL_INT_REG 46
+KERNEL_INT_REG 47
 
 KERNEL_INT_REG 128
 
+// TODO: only getting one ignored irq after sti ??? think i fucked up masking (lol)
 
 .type kernel_isr_main, @function
 kernel_isr_main:
@@ -53,5 +66,5 @@ kernel_isr_main:
     add $4, %esp
 
 kernel_int_ignore:
+
     iret
-    

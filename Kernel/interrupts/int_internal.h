@@ -37,9 +37,26 @@
 #define INT_FAUL_VE 18 /* Virtualization Exception */
 #define INT_FAUL_CP 19 /* Control Protection Exception */
 
-#define INT_INTR_PTI 32	 /* Programmable Timer */
-#define INT_INTR_KBD 33	 /* Keyboard Input */
+#define INT_INTR_PTI 32 /* Programmable Timer */
+#define INT_INTR_KBD 33 /* Keyboard Input */
+#define INT_INTR_CSC 34 /* Cascade (wont be raised) */
+#define INT_INTR_CO1 35 /* COM1 */
+#define INT_INTR_CO2 36 /* COM2 */
+#define INT_INTR_LP2 37 /* LPT2 */
+#define INT_INTR_FLD 38 /* Floppy Disk */
+#define INT_INTR_LP1 39 /* LPT1 */
+#define INT_INTR_RTC 40 /* CMOS Realtime Clock */
+#define INT_INTR_PH0 41 /* Free for peripherals / legacy scsi / nic */
+#define INT_INTR_PH1 42 /* Free for peripherals / scsi / nic */
+#define INT_INTR_PH2 43 /* Free for peripherals / scsi / nic */
+#define INT_INTR_PS2 44 /* PS2 Mouse */
+#define INT_INTR_FPU 45 /* FPU */
+#define INT_INTR_PAT 46 /* Primary ATA Disk */
+#define INT_INTR_SAT 47 /* Secondary ATA Disk */
+
 #define INT_INTR_SYS 128 /* Syscall */
+
+#define INT_PIC_REMAP 0x20
 
 typedef struct {
 	uint16 base_lo;
@@ -85,21 +102,33 @@ void kernel_idt_set_entry(uint8 interrupt, void *handler, uint8 flags,
 /* load idt */
 void kernel_idt_load(const KernelIdtDescriptor *descp);
 
-/* enable interrupts */
-void kernel_int_enable();
-
-/* disable interrupts */
-void kernel_int_disable();
-
 /* handle interrupts */
 void kernel_int_handle(KernelIntStack *stack);
+
+/* send end of interrupt */
+void kernel_int_pic_eoi(uint8 irq);
 
 /* =========== Interrupt Forwards =========== */
 
 void kernel_int_ignore();
 
+void kernel_isr_forward_0();
 void kernel_isr_forward_32();
 void kernel_isr_forward_33();
+void kernel_isr_forward_34();
+void kernel_isr_forward_35();
+void kernel_isr_forward_36();
+void kernel_isr_forward_37();
+void kernel_isr_forward_38();
+void kernel_isr_forward_39();
+void kernel_isr_forward_40();
+void kernel_isr_forward_41();
+void kernel_isr_forward_42();
+void kernel_isr_forward_43();
+void kernel_isr_forward_44();
+void kernel_isr_forward_45();
+void kernel_isr_forward_46();
+void kernel_isr_forward_47();
 void kernel_isr_forward_128();
 
 #endif

@@ -2,6 +2,6 @@
 
 ## TODO:
 - [x] Interrupts
-- [ ] PIC
-- [ ] Simple Video Driver
+- [x] PIC
+- [x] Simple Video Driver
 - [ ] Paging

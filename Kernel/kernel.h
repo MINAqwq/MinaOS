@@ -1,8 +1,7 @@
-//
-// Created by mina on 11/13/23.
-//
+#ifndef KERNEL_H
+#define KERNEL_H
 
-#ifndef OS_KERNEL_H
-#define OS_KERNEL_H
+/* fatal error will atm just hlt the cpu (I'm not that creative OK) */
+void kernel_error_fatal();
 
-#endif // OS_KERNEL_H
+#endif

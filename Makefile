@@ -1,4 +1,4 @@
-TARGET=
+TARGET=i386-elf
 TOOLCHAIN=./Toolchain/$(TARGET)
 
 CC=$(TOOLCHAIN)/bin/$(TARGET)-gcc
@@ -15,15 +15,21 @@ Kernel/boot/b_stack.o \
 Kernel/interrupts/int_handler.o \
 Kernel/interrupts/int_idt.o \
 Kernel/interrupts/int_idt0.o \
-Kernel/interrupts/int_isr.o
+Kernel/interrupts/int_isr.o \
+Kernel/interrupts/int_irq.o \
+Kernel/interrupts/int_pic.o \
+Kernel/ports/p_io.o \
+Kernel/video/v_abstract.o \
+Kernel/video/v_vga.o \
+Kernel/k_error.o\
+Kernel/k_main.o
 
-Kernel/boot/%.o: Kernel/boot/%.s
-	$(AS) $< -o $@
-
-kernel-i386: TARGET=i386-elf
-kernel-i386: $(KERNEL_OBJ)
+kernel: $(KERNEL_OBJ)
 	$(LD) $(KERNEL_OBJ) -T Kernel/linker.ld -o kernel.bin
-#strip kernel.bin
+	strip kernel.bin
+
+all: kernel
+
 
 .PHONY:
 kernel-clean:

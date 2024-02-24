@@ -1,4 +1,4 @@
-#include "int_internal.h"
+#include "internal.h"
 #include "interrupts.h"
 
 /* pointer to idt descriptor */

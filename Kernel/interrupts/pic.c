@@ -1,6 +1,6 @@
 #include "../ports/ports.h"
 #include "../video/video.h"
-#include "int_internal.h"
+#include "internal.h"
 
 #define PORT_PIC_M_COMMAND 0x20
 #define PORT_PIC_M_DATA	   0x21

@@ -1,7 +1,7 @@
 #ifndef KERNEL_INT_INTERNAL_H
 #define KERNEL_INT_INTERNAL_H
 
-#include "../k_types.h"
+#include "../types.h"
 
 #define IDT_FLAG_GATE_TASK_32	   0x05
 #define IDT_FLAG_GATE_INTERRUPT_16 0x06

@@ -1,4 +1,4 @@
-#include "v_internal.h"
+#include "internal.h"
 
 static uint16 *vga_buffer;
 static uint16  vga_row;

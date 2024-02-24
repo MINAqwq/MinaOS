@@ -8,21 +8,21 @@ LD=$(TOOLCHAIN)/bin/$(TARGET)-ld
 CFLAGS=-std=c89 -nostdlib -ffreestanding
 
 KERNEL_OBJ=\
-Kernel/boot/b_boot.o \
-Kernel/boot/b_gdt.o \
-Kernel/boot/b_multiboot.o \
-Kernel/boot/b_stack.o \
-Kernel/interrupts/int_handler.o \
-Kernel/interrupts/int_idt.o \
-Kernel/interrupts/int_idt0.o \
-Kernel/interrupts/int_isr.o \
-Kernel/interrupts/int_irq.o \
-Kernel/interrupts/int_pic.o \
-Kernel/ports/p_io.o \
-Kernel/video/v_abstract.o \
-Kernel/video/v_vga.o \
-Kernel/k_error.o\
-Kernel/k_main.o
+Kernel/boot/boot.o \
+Kernel/boot/gdt.o \
+Kernel/boot/multiboot.o \
+Kernel/boot/stack.o \
+Kernel/interrupts/interrupts.o \
+Kernel/interrupts/idt.o \
+Kernel/interrupts/idt0.o \
+Kernel/interrupts/isr.o \
+Kernel/interrupts/irq.o \
+Kernel/interrupts/pic.o \
+Kernel/ports/io.o \
+Kernel/video/abstract.o \
+Kernel/video/vga.o \
+Kernel/error.o\
+Kernel/main.o
 
 kernel: $(KERNEL_OBJ)
 	$(LD) $(KERNEL_OBJ) -T Kernel/linker.ld -o kernel.bin

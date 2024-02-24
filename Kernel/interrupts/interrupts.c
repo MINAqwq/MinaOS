@@ -1,6 +1,6 @@
 #include "../kernel.h"
 #include "../video/video.h"
-#include "int_internal.h"
+#include "internal.h"
 
 void
 kernel_int_handle(KernelIntStack *stack)

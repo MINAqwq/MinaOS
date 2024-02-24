@@ -1,7 +1,7 @@
 #ifndef KERNEL_INT_INTERRUPTS_H
 #define KERNEL_INT_INTERRUPTS_H
 
-#include "../k_types.h"
+#include "../types.h"
 
 /* load the idt and setup interrrupts */
 void kernel_int_setup();

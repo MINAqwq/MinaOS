@@ -1,7 +1,7 @@
 #ifndef KERNEL_V_VIDEO_H
 #define KERNEL_V_VIDEO_H
 
-#include "../k_types.h"
+#include "../types.h"
 
 #define KERNEL_VIDEO_DEVICE_VGA 0x00
 

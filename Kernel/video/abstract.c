@@ -1,4 +1,4 @@
-#include "v_internal.h"
+#include "internal.h"
 
 static uint current_device;
 

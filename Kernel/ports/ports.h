@@ -1,7 +1,7 @@
 #ifndef KERNEL_P_PORTS_H
 #define KERNEL_P_PORTS_H
 
-#include "../k_types.h"
+#include "../types.h"
 
 /* write a byte to port */
 void kernel_ports_outb(uint8 value, uint8 port);

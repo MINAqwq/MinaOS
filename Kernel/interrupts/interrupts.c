@@ -8,8 +8,7 @@ kernel_int_handle(KernelIntStack *stack)
 	switch (stack->interrupt) {
 		/* TODO: Error handling with cool debug hlt screen */
 	case INT_FAUL_DE:
-		kernel_video_print("[ERROR] Divide by 0\n");
-		kernel_error_fatal();
+		kernel_error_fatal("Divide by 0\n");
 		break;
 	case INT_FAUL_DB:
 	case INT_INTR_NI:
